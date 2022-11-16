@@ -234,9 +234,9 @@ const songView = (event) => {
     ul.appendChild(li);
     
     view.appendChild(ul);
-    chart();
+    //chart();
 }
-
+/*
 function chart(){
     const ctx = document.getElementById('chart');
     new Chart(ctx, {
