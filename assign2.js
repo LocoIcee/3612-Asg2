@@ -416,7 +416,6 @@ function clearSongView(){
 const addToPlaylist = (event) => {
     let playList = localStorage.getItem('playList');
     let songList = JSON.parse(localStorage.getItem('currentList'));
-    console.log(event)
     let song = songList.find(s => {
             let path = event.composedPath();
             return s.song_id.toString() === path[1].id
