@@ -25,28 +25,28 @@ document.addEventListener('DOMContentLoaded',function (){
     }
     else loadSongs(JSON.parse(songList), 'currentList');
     
-    let artists = document.getElementById("artists")
-    fetch('artists.json')
-    .then((res) => res.json())
-    .then((allArtists) => {
-        allArtists.forEach(artist =>{
-            let option = document.createElement('option');
-            option.innerText = artist.name;
-            artists.appendChild(option);
-        })
-    });
-    
-    let genres = document.getElementById("genres")
-    fetch('genres.json')
-    .then((res) => res.json())
-    .then((allGenres) => {
-        allGenres.forEach(genre =>{
-            let option = document.createElement('option');
-            option.innerText = genre.name;
-            genres.appendChild(option);
-        })
-    });
-    
+    let artists = document.getElementById("artists");
+        fetch('artists.json')
+        .then((res) => res.json())
+        .then((allArtists) => {
+            allArtists.forEach(artist =>{
+                let option = document.createElement('option');
+                option.innerText = artist.name;
+                artists.appendChild(option);
+            })
+        });
+        
+    let genres = document.getElementById("genres");
+        fetch('genres.json')
+        .then((res) => res.json())
+        .then((allGenres) => {
+            allGenres.forEach(genre =>{
+                let option = document.createElement('option');
+                option.innerText = genre.name;
+                genres.appendChild(option);
+            })
+        });
+        
     let playList = JSON.parse(localStorage.getItem('playList'));
     loadSongs(playList,'playList');
     
@@ -67,42 +67,52 @@ function loadSongs(songs, listKey){
     let head = document.createElement('th');
     head.innerText = "Title";
     row.appendChild(head);
-    let button = document.createElement('button')
+    let button = document.createElement('button');
+    button.id = "b1";
     button.setAttribute("class", "sort");
     button.setAttribute("onclick", `sort('title', '${listKey}')`);
+    button.innerText = '\u25b3';
     head.appendChild(button);
     
     
     head = document.createElement('th');
     head.innerText = "Artist";
     row.appendChild(head);
-    button = document.createElement('button')
+    button = document.createElement('button');
+    button.id = "b2";
     button.setAttribute("class", "sort");
     button.setAttribute("onclick", `sort('artist', '${listKey}')`);
+    button.innerText = '\u25b3';
     head.appendChild(button);
     
     head = document.createElement('th');
     head.innerText = "Year";
     row.appendChild(head);
-    button = document.createElement('button')
+    button = document.createElement('button');
+    button.id = "b3";
     button.setAttribute("class", "sort");
     button.setAttribute("onclick", `sort('year', '${listKey}')`);
+    button.innerText = '\u25b3';
     head.appendChild(button);
     
     head = document.createElement('th');
     head.innerText = "Genre";
     row.appendChild(head);
-    button = document.createElement('button')
+    button = document.createElement('button');
+    button.id = "b4";
     button.setAttribute("class", "sort");
     button.setAttribute("onclick", `sort('genre', '${listKey}')`);
+    button.innerText = '\u25b3';
     head.appendChild(button);
     
     head = document.createElement('th');
     head.innerText = "Popularity";
     row.appendChild(head);
-    button = document.createElement('button')
+    button = document.createElement('button');
+    button.id = "b5";
     button.setAttribute("class", "sort");
     button.setAttribute("onclick", `sort('pop', '${listKey}')`);
+    button.innerText = '\u25b3';
     head.appendChild(button);
     
     table.appendChild(row);
@@ -216,6 +226,67 @@ function sort(sortKey, listKey){
         list.sort((a,b) => a.details.popularity - b.details.popularity);
     }
     loadSongs(list, listKey);
+    
+    if (sortKey === 'title'){
+        let button = document.getElementById('b1')
+        button.innerText = '\u25bd'
+        button = document.getElementById('b2')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b3')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b4')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b5')
+        button.innerText = '\u25b3'
+    }
+    else if (sortKey === 'artist'){
+        let button = document.getElementById('b1')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b2')
+        button.innerText = '\u25bd'
+        button = document.getElementById('b3')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b4')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b5')
+        button.innerText = '\u25b3'
+    }
+    else if (sortKey === 'year'){
+        let button = document.getElementById('b1')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b2')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b3')
+        button.innerText = '\u25bd'
+        button = document.getElementById('b4')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b5')
+        button.innerText = '\u25b3'
+    }
+    else if (sortKey === 'genre'){
+        let button = document.getElementById('b1')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b2')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b3')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b4')
+        button.innerText = '\u25bd'
+        button = document.getElementById('b5')
+        button.innerText = '\u25b3'
+    }
+    else if (sortKey === 'pop'){
+        let button = document.getElementById('b1')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b2')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b3')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b4')
+        button.innerText = '\u25b3'
+        button = document.getElementById('b5')
+        button.innerText = '\u25bd'
+    }
 }
 
 const songView = (event) => {
