@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title></title>
+   <link href="style.css" rel="stylesheet"/>
+   <script src="assign2.js"></script>
+   <script src="artists.json"></script>
+   <script src="genres.json"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.0-release/chart.umd.js" integrity="sha512-besW4sz3Eyv7QNLOdg24e5cY6oHgebwy2ZGVCX8FaB82nPWUViMmjoKs/McU4QNkdJsajih3zj6XrwJiuzcjYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+<body>
+    <header>
+        <h1>Music Library</h1>
+        <button id="playlist" onclick="playlistView()">Playlist
+            </button>
+        <button id="close" class="hidden" onclick="closeView()">Close
+            </button>
+        <div class="dropdown">
+            <button class="dropbtn">Credits
+                </button>
+            <div class="dropdown-content">
+                <p>Cameron Hill Comp3612</p>
+                <a href="https://github.com/LocoIcee/Asg2">Github</a>
+                </div>
+            
+        </header>
+    <section id="browseView">
+        <div id="searchView">
+            <h2>Search</h2>
+            <input id="sTitle" type="radio" name="searchType"/>
+            Title <input id="title" type=text placeholder="Type Here"/>
+            <input id="sArtists" type="radio" name="searchType"/>
+            Artist <select id="artists"/>
+            <option selected="selected">Pick One</option></select>
+            <input id="sGenres" type="radio" name="searchType"/>
+            Genre <select id="genres"/>
+            <option>Pick One</option></select>
+            <button id="clear" onclick="clearSearch()">Clear</button>
+            <button id="search" onclick="searchResults()">Search</button>
+            
+            </div>
+        <div id="results">
+            <h2>Results</h2>
+            <table>
+                </table>
+            </div>
+        <div id="snackbar">Song has been added to playlist</div>
+        </section>
+    <section id="songView" class="hidden">
+        <div id="info">
+            </div>
+        <div id="holdChart">
+            <canvas id="chart"></canvas>
+            </div>
+        </section>
+    <section id="playlistView" class="hidden">
+        <div>
+            <h2>Favorites</h2>
+            <button id="playlistClear" onclick="clearPlaylist()">Clear</button>
+            <table id="playList">
+                </table>
+            </div>
+        </section>
+    <footer>
+        <p>Copyright &copy; 2022 Some Company</p>
+        </footer>
+</body>
+</html>
