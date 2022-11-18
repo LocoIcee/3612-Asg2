@@ -395,7 +395,8 @@ function closeView(){
     view.classList.toggle("hidden");
 }
 function playlistView(){
-    
+    let playList = JSON.parse(localStorage.getItem('playList'));
+    loadSongs(playList, 'playList');
     let view = document.getElementById("browseView");
     view.classList.toggle("hidden");
     view = document.getElementById("playlistView");
@@ -434,7 +435,6 @@ const addToPlaylist = (event) => {
         playList.push(song);
     }
     localStorage.setItem('playList', JSON.stringify(playList));
-    loadSongs(playList, 'playList');
     displayToast();
 }
 
@@ -442,8 +442,6 @@ const removeFromPlaylist = (event) => {
     let playList = JSON.parse(localStorage.getItem('playList'));
     playList.splice(event.target.id, 1);
     localStorage.setItem('playList', JSON.stringify(playList));
-    loadSongs(playList, 'playList');
-   
 }
 
 function displayToast() {
