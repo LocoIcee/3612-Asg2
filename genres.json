@@ -1,4 +1,4 @@
-const allGenres = [{
+[{
 		"id": 101,
 		"name": "afroswing"
 	},
