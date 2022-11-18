@@ -442,6 +442,7 @@ const removeFromPlaylist = (event) => {
     let playList = JSON.parse(localStorage.getItem('playList'));
     playList.splice(event.target.id, 1);
     localStorage.setItem('playList', JSON.stringify(playList));
+    loadSongs(playList, 'playList');
 }
 
 function displayToast() {
